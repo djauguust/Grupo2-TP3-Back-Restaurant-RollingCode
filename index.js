@@ -1,5 +1,8 @@
 import express from "express";
 import "dotenv/config"
+import morgan from "morgan";
+import cors from "cors"
+
 
 const connectDb = require("./src/BaseDeDatos/database")
 
@@ -26,3 +29,15 @@ const iniciarBack = async () =>{
 }
 
 iniciarBack()
+
+//MIDDLEWARES: Configuraciones extras del backend antes de que se ejecuten las rutas
+
+//1-middleares nativos de express
+
+app.use(express.json()) //Permite recibir objetos en formato json
+app.use(express.urlencoded({extended:true})) //Permite recibir parametros en las rutas
+
+//2-middle de terceros
+
+app.use(morgan("dev")) //Nos brinda detalles de nuestra terminal
+app.use(cors()) //Permite recibir peticiones remotras
