@@ -1,0 +1,20 @@
+{
+  "name": "proyecto-rollingrestaurante-backend",
+  "version": "1.0.0",
+  "description": "Branch para ver el Token",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "[request",
+    "response",
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE]"
+  ],
+  "author": "Lucas Yudi",
+  "license": "ISC"
+}
