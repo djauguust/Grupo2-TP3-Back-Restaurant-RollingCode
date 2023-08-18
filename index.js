@@ -41,3 +41,13 @@ app.use(express.urlencoded({extended:true})) //Permite recibir parametros en las
 
 app.use(morgan("dev")) //Nos brinda detalles de nuestra terminal
 app.use(cors()) //Permite recibir peticiones remotras
+
+//Usando las rutas
+
+app.use("/api", require("./src/Rutas/rutasUsuarios"))
+
+//Middleware de manejo de errores centralizado
+
+app.use((error, req, res, next) =>{
+    res.status(error.status || 500 ).json({ error: error.message})
+})

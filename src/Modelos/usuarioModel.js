@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const {Schema} = mongoose
+const bcrypt = require("bcrypt");
 
 const rolesPermitidos = ["usuario", "admin", "portero"];
 
@@ -50,16 +51,7 @@ const usuarioEsquema = new Schema ({
     contraseña: {
         type: String, //Tipo de dato
         required: true,
-        max: 12,
-        min:3,
         trim: true, //Elimina espacios
-        validate: {
-            validator: function (v) {
-                // Expresión regular para permitir solo letras
-                return /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(v);
-            },
-            message: props => `${props.value} no es un Email válido.`
-        }
     },
     activo : {
         type: Boolean, // Tipo de dato booleano (true o false)
