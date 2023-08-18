@@ -18,7 +18,7 @@ const usuarioEsquema = new Schema ({
             message: props => `${props.value} no es un nombre válido. Debe contener solo letras.`
         }
     },
-    Apellido: {
+    apellido: {
         type: String, //Tipo de dato
         required: true,
         max: 12,
@@ -61,11 +61,11 @@ const usuarioEsquema = new Schema ({
             message: props => `${props.value} no es un Email válido.`
         }
     },
-    Activo : {
+    activo : {
         type: Boolean, // Tipo de dato booleano (true o false)
         required: true, // Requerido
     },
-    Rol: {
+    rol: {
         type: String, //Tipo de dato
         required: true,
         trim: true, //Elimina espacios
