@@ -71,14 +71,6 @@ const getUserById = async (req, res) => {
   }
 };
 
-/* const getReservasByUser = async (req, res) => {
-    try{
-        const allReservas = await
-    }catch(error){
-
-    }
-}; */
-
 //PUT
 const updateUser = async (req, res) => {
   try {
