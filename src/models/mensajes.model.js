@@ -11,7 +11,7 @@ const mensajesModel = new Schema(
       trim: true
     },
     email: {
-      type: email,
+      type: String,
       require: true,
       min: 4,
       max: 25,
@@ -23,6 +23,14 @@ const mensajesModel = new Schema(
       min: 50,
       max: 1000,
       trim: true
+    },
+    date: {
+      type : String,
+      require: true,
+    },
+    leido: {
+      type : Boolean,
+      require: true
     }
   },
   {versionKey: false}
