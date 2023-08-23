@@ -47,27 +47,22 @@ const createMessage = async (req,res)=>{
 
 
 // //DELETE
-// const deleteMessage = async (req, res) => {
-//   try {
-//     const userId = req.params.userId
-//     const messageId = req.params.messageId
+const deleteMessage = async (req, res) => {
+  try {
+    const messageId = req.params.messageId
 
-//     // Buscar y borrar el mensaje solo si pertenece al usuario
-//     const deletedMessage = await Mensajes.findOneAndDelete({ _id: messageId, userId });
+    // Buscar y borrar el mensaje solo si pertenece al usuario
+    const deletedMessage = await Mensajes.findOneAndDelete({ _id: messageId });
 
-//     if (!deletedMessage) {
-//       return res.status(404).json({ message: "Mensaje no encontrado o no pertenece al usuario" });
-//     }
-
-//     res.status(200).json({ message: "Mensaje borrado exitosamente" });
-//   } catch (error) {
-//     res.status(500).json({ message: "Error al borrar el mensaje" });
-//   }
-// };
+    res.status(200).json({ message: "Mensaje borrado exitosamente" });
+  } catch (error) {
+    res.status(404).json({ message: "Mensaje no encontrado" });
+  }
+};
 
 module.exports = {
   getMessage,
   createMessage,
+  deleteMessage
   // getMessageByUser,
-  // deleteMessage
 }

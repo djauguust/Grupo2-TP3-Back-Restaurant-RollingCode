@@ -13,6 +13,6 @@ router.post("/mensajes", mensajesControllers.createMessage)
 
 
 //DELETE
-// router.delete("/mensajes/:userId/:messageId", mensajesControllers.deleteMessage)
+router.delete("/mensajes/:messageId", mensajesControllers.deleteMessage)
 
 module.exports = router;
