@@ -44,5 +44,6 @@ app.use(
   require("./src/routes/Usuarios.Routes.js"),
   require("./src/routes/Reservas.Routes.js"),
   /* require("./src/routes/Restaurant.Routes.js") */
+  require("./src/routes/Mensajes.Routes.js"),
 );
  

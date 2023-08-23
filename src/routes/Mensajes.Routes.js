@@ -12,3 +12,5 @@ router.get("/mensjes/:userId", mensajesControllers.getMessageByUser)
 
 //DELETE
 router.delete("/mensjes/:userId/:messageId", mensajesControllers.deleteMessage)
+
+module.exports = router
