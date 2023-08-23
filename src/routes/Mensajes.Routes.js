@@ -1,16 +1,18 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
 const mensajesControllers = require("../controllers/mensajeController")
 
-//POST
-router.post("/mensjes", mensajesControllers.createMessage)
-
 //GET
-router.get("/mensjes", mensajesControllers.getMessage)
-router.get("/mensjes/:userId", mensajesControllers.getMessageByUser)
+router.get("/mensajes", mensajesControllers.getMessage);
+// router.get("/mensajes/:userId", mensajesControllers.getMessageByUser)
+
+
+//POST
+router.post("/mensajes", mensajesControllers.createMessage)
+
 
 //DELETE
-router.delete("/mensjes/:userId/:messageId", mensajesControllers.deleteMessage)
+// router.delete("/mensajes/:userId/:messageId", mensajesControllers.deleteMessage)
 
-module.exports = router
+module.exports = router;

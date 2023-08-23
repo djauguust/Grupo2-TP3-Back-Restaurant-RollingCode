@@ -5,33 +5,33 @@ const mensajesModel = new Schema(
   {
     nombre: {
       type: String,
-      require: true,
-      min: 8,
-      max: 35,
-      trim: true
+      // require: true,
+      // min: 8,
+      // max: 35,
+      // trim: true
     },
     email: {
       type: String,
-      require: true,
-      min: 4,
-      max: 25,
-      trim: true
+      // require: true,
+      // min: 4,
+      // max: 25,
+      // trim: true
     },
     mensaje: {
       type: String,
-      require: true,
-      min: 50,
-      max: 1000,
-      trim: true
+      // require: true,
+      // min: 50,
+      // max: 1000,
+      // trim: true
     },
     date: {
       type : String,
-      require: true,
+      require: true
     },
     leido: {
       type : Boolean,
       require: true
-    }
+    },
   },
   {versionKey: false}
 )
