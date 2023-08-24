@@ -42,7 +42,7 @@ const restaurantModel = new Schema({
     type: Number,
     required: true,
   },
-  tiempoMaximoReserva: { type: Number, required: true },
+  tiempoMaximoReserva: { type: Number, required: true, min: 1, max: 5 },
 });
 
 const RestaurantModel = mongoose.model("restaurant", restaurantModel); // crea la colección en la db
