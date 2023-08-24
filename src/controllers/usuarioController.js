@@ -1,5 +1,6 @@
 const Usuarios = require("../models/usuarios.model");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 // POST
 const register = async (req, res) => {
@@ -13,7 +14,7 @@ const register = async (req, res) => {
       const hash = await bcrypt.hash(contrasenia, 10);
       const usuario = new Usuarios({
         nombre,
-        apellido : "sinApellido",
+        apellido: "sinApellido",
         email,
         contrasenia: hash,
         esActivo: true,
@@ -28,29 +29,32 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const user = await UsuarioModel.findOne({ email: req.body.email });
-  if (!user) {
-    return res.status(404).send("Usuario y/o contraseña incorrectos");
-  }
-  const match = await bcrypt.compare(req.body.contraseña, user.contrasenia);
-  if (!match) {
-    return res.status(404).send("Usuario y/o contraseña incorrectos");
-  }
+  try {
+    const user = await Usuarios.findOne({ email: req.body.email });
+    console.log(user);
+    if (!user) {
+      return res.status(404).send("Usuario y/o contraseña incorrectos");
+    }
+    const match = await bcrypt.compare(req.body.contrasenia, user.contrasenia);
+    if (!match) {
+      return res.status(404).send("Usuario y/o contraseña incorrectos");
+    }
 
-  //Creacion del Token
-  const token = jwt.sign(
-    {
-      id: user._id,
-      rol: user.rol,
-    },
-    process.env.SECRET_KEY,
-    { expiresIn: "1D" }
-  );
-
-  res.header("auth-token", token).json({
-    error: null,
-    data: { token },
-  }).send();
+    //Creacion del Token
+    const token = jwt.sign(
+      {
+        id: user._id,
+        rol: user.esAdmin,
+      },
+      process.env.SECRET_KEY,
+      { expiresIn: "1D" }
+    );
+    console.log(token);
+    res.header("auth-token", token).json({
+      error: null,
+      data: { token },
+    });
+  } catch (error) {}
 };
 
 //GET

@@ -4,11 +4,11 @@ const router = express.Router();
 const usuariosController = require("../controllers/usuarioController");
 
 //POST
-router.post("/usuarios", usuariosController.register);
-router.post("/login", usuariosController.login);
+router.post("/usuarios/", usuariosController.register);
+router.post("/login/", usuariosController.login);
 
 //GET
-router.get("/usuarios", usuariosController.getAllUsers);
+router.get("/usuarios/", usuariosController.getAllUsers);
 router.get("/usuarios/:id", usuariosController.getUserById);
 
 //PUT
