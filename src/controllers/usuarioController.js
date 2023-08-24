@@ -32,7 +32,7 @@ const login = async (req, res) => {
   if (!user) {
     return res.status(404).send("Usuario y/o contraseña incorrectos");
   }
-  const match = await bcrypt.compare(req.body.contraseña, user.contraseña);
+  const match = await bcrypt.compare(req.body.contraseña, user.contrasenia);
   if (!match) {
     return res.status(404).send("Usuario y/o contraseña incorrectos");
   }
