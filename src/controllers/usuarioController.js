@@ -13,7 +13,7 @@ const register = async (req, res) => {
       const hash = await bcrypt.hash(contrasenia, 10);
       const usuario = new Usuarios({
         nombre,
-        apellido,
+        apellido : "sinApellido",
         email,
         contrasenia: hash,
         esActivo: true,
