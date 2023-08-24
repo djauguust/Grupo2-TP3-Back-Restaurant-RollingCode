@@ -10,8 +10,10 @@ router.post("/reservas", ReservasController.newReserva);
 router.delete("/reservas/:id", ReservasController.deleteReserva);
 
 //GET
-router.get("/reservas/:fecha", ReservasController.getReservasByFecha);
 router.get("/reservas/", ReservasController.getAllReservas);
+router.get("/reservas/:fecha", ReservasController.getReservasByFecha);
+router.get("/reservas/:fecha/:hora", ReservasController.getDisponibilidadPorFechaYHora);
+router.get("/turnos/:fecha", ReservasController.getHorariosDisponiblesByFecha);
 
 //PUT
 router.put("/reservas/:id", ReservasController.updateReserva);

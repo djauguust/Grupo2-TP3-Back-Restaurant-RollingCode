@@ -57,6 +57,27 @@ const estandarizarHora = (hora) => {
   } catch (error) {}
 };
 
+function generarArrayDeHoras() {
+  const horas = [];
+  let hora = 12;
+  let minutos = 0;
+
+  while (hora <= 23 || (hora === 23 && minutos <= 30)) {
+    const horaFormateada = `${hora.toString().padStart(2, "0")}:${minutos
+      .toString()
+      .padStart(2, "0")}`;
+    horas.push(horaFormateada);
+
+    minutos += 30;
+    if (minutos === 60) {
+      minutos = 0;
+      hora += 1;
+    }
+  }
+
+  return horas;
+}
+
 //POST
 const newReserva = async (req, res) => {
   try {
@@ -128,6 +149,41 @@ const getAllReservas = async (req, res) => {
   }
 };
 
+const getDisponibilidadPorFechaYHora = async (req, res) => {
+  try {
+    const hora = req.params.hora;
+    const fecha = req.params.fecha;
+    let array = actualYTresTurnosPrevios(hora);
+    let suma = 0;
+    const reservasDelDia = await Reservas.find({ fecha: fecha });
+    array.map((a) => {
+      suma += cantComensalesXFechaYHora(reservasDelDia, fecha, a)[0];
+    });
+    res.status(200).json(suma);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const getHorariosDisponiblesByFecha = async (req, res) => {
+  try {
+    const fecha = req.params.fecha;
+    const turnos = generarArrayDeHoras();
+    let respuesta = [];
+    const promesas = turnos.map(async (t) => {
+      let a = await hayDisponibilidad(fecha, t, 1);
+      if (a) {
+        respuesta = [...respuesta, t];
+        return respuesta;
+      }
+    });
+    const resultados = await Promise.all(promesas);
+    await res.status(200).json(resultados[resultados.length - 1]);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 //PUT
 const updateReserva = async (req, res) => {
   try {
@@ -178,4 +234,6 @@ module.exports = {
   getReservasByFecha,
   getAllReservas,
   updateReserva,
+  getDisponibilidadPorFechaYHora,
+  getHorariosDisponiblesByFecha,
 };
