@@ -13,22 +13,16 @@ const restaurantModel = new Schema({
     type: Number,
     required: true,
     min: 1,
-    max: 10,
   },
   fechasNoDisponibles: [
     {
-      desde: {
-        type: Date,
-        required: true,
-      },
-      hasta: {
-        type: Date,
-        required: true,
-      },
-      motivo: {
+      fecha: {
         type: String,
-        min: 3,
-        max: 200,
+        required: true,
+      },
+      admin: {
+        type: String,
+        required: true,
       },
     },
   ],
@@ -49,3 +43,7 @@ const restaurantModel = new Schema({
     required: true,
   },
 });
+
+const RestaurantModel = mongoose.model("restaurant", restaurantModel); // crea la colección en la db
+
+module.exports = RestaurantModel;
