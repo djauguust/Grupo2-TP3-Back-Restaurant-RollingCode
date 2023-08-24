@@ -20,7 +20,7 @@ const updateRestaurant = async (req, res) => {
   try {
     const data = await Restaurant.find();
     const restaurant = data[0];
-    console.log(restaurant)
+    console.log(restaurant);
     restaurant.nombre = req.body.nombre || restaurant.nombre;
     restaurant.maximoComensales =
       req.body.maximoComensales || restaurant.maximoComensales;
@@ -30,6 +30,8 @@ const updateRestaurant = async (req, res) => {
       req.body.horario.hasta || restaurant.horario.hasta;
     restaurant.reservasMaxima =
       req.body.reservasMaxima || restaurant.reservasMaxima;
+    restaurant.tiempoMaximoReserva =
+      req.body.tiempoMaximoReserva || restaurant.tiempoMaximoReserva;
     console.log(restaurant);
     await restaurant.save();
     res.status(200).json({ message: "Restaurante actualizado" });
@@ -87,13 +89,11 @@ const deleteFechaNoDisp = async (req, res) => {
         restaurant.fechasNoDisponibles = array;
         await restaurant.save();
         res.status(200).json({
-          message:
-            "Ahora se pueden hacer reservas en la fecha " + fecha,
+          message: "Ahora se pueden hacer reservas en la fecha " + fecha,
         });
       } else {
         res.status(200).json({
-          message:
-            "No existen tal fecha en la db"
+          message: "No existen tal fecha en la db",
         });
       }
     } else {
