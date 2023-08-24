@@ -50,7 +50,7 @@ const login = async (req, res) => {
   res.header("auth-token", token).json({
     error: null,
     data: { token },
-  });
+  }).send();
 };
 
 //GET
