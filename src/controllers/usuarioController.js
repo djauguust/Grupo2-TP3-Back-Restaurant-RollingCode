@@ -51,7 +51,6 @@ const login = async (req, res) => {
     );
     console.log(token);
     res.header("auth-token", token).json({
-      error: null,
       data: { token },
     });
   } catch (error) {}
