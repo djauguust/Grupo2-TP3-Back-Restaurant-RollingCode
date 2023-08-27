@@ -112,36 +112,35 @@ const getReservasByFecha = async (req, res) => {
     const allUsers = await Usuarios.find();
     let array = [];
     const c = result.map((r) => {
-      allUsers.find((f) => {
-        let aux;
-        if (f._id == r.usuario) {
-          aux = {
-            _id: r._id,
-            fecha: r.fecha,
-            hora: r.hora,
-            comensales: r.comensales,
-            fueUsada: r.fueUsada,
-            usuario: {
-              _id: f._id,
-              nombre: f.nombre,
-              apellido: f.apellido,
-              email: f.email,
-              esActivo: f.esActivo,
-              esAdmin: f.esAdmin,
-            },
-          };
-        } else {
-          aux = {
-            _id: r._id,
-            fecha: r.fecha,
-            hora: r.hora,
-            comensales: r.comensales,
-            fueUsada: r.fueUsada,
-            usuario: { _id: r.usuario, nombre: "Usuario NO encontrado" },
-          };
-        }
-        array = [...array, aux];
-      });
+      let a = allUsers.find((f) => f._id == r.usuario);
+      let aux;
+      if (a) {
+        aux = {
+          _id: r._id,
+          fecha: r.fecha,
+          hora: r.hora,
+          comensales: r.comensales,
+          fueUsada: r.fueUsada,
+          usuario: {
+            _id: a._id,
+            nombre: a.nombre,
+            apellido: a.apellido,
+            email: a.email,
+            esActivo: a.esActivo,
+            esAdmin: a.esAdmin,
+          },
+        };
+      } else {
+        aux = {
+          _id: r._id,
+          fecha: r.fecha,
+          hora: r.hora,
+          comensales: r.comensales,
+          fueUsada: r.fueUsada,
+          usuario: { _id: r.usuario, nombre: "Usuario NO encontrado", a: a },
+        };
+      }
+      array = [...array, aux];
     });
     res.status(200).json(array);
   } catch (error) {
