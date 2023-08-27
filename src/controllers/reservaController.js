@@ -109,7 +109,31 @@ const getReservasByFecha = async (req, res) => {
   try {
     const fecha = req.params.fecha;
     const result = await Reservas.find({ fecha: fecha });
-    res.status(200).json(result);
+    let array = [];
+    const c = allReservas.map((r) => {
+      allUsers.find((f) => {
+        if (f._id == r.usuario) {
+          let aux = {
+            _id: r._id,
+            fecha: r.fecha,
+            hora: r.hora,
+            comensales: r.comensales,
+            fueUsada: r.fueUsada,
+            usuario: {
+              _id: f._id,
+              nombre: f.nombre,
+              apellido: f.apellido,
+              email: f.email,
+              esActivo: f.esActivo,
+              esAdmin: f.esAdmin,
+            },
+          };
+          array = [...array, aux];
+          console.log(aux);
+        }
+      });
+    });
+    res.status(200).json(array);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
