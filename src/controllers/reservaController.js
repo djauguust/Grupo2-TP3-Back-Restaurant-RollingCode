@@ -113,8 +113,9 @@ const getReservasByFecha = async (req, res) => {
     let array = [];
     const c = result.map((r) => {
       allUsers.find((f) => {
+        let aux;
         if (f._id == r.usuario) {
-          let aux = {
+          aux = {
             _id: r._id,
             fecha: r.fecha,
             hora: r.hora,
@@ -129,9 +130,17 @@ const getReservasByFecha = async (req, res) => {
               esAdmin: f.esAdmin,
             },
           };
-          array = [...array, aux];
-          console.log(aux);
+        } else {
+          aux = {
+            _id: r._id,
+            fecha: r.fecha,
+            hora: r.hora,
+            comensales: r.comensales,
+            fueUsada: r.fueUsada,
+            usuario: { _id: r.usuario, nombre: "Usuario NO encontrado" },
+          };
         }
+        array = [...array, aux];
       });
     });
     res.status(200).json(array);
