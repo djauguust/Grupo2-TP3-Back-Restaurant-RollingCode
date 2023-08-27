@@ -109,8 +109,9 @@ const getReservasByFecha = async (req, res) => {
   try {
     const fecha = req.params.fecha;
     const result = await Reservas.find({ fecha: fecha });
+    const allUsers = await Usuarios.find();
     let array = [];
-    const c = allReservas.map((r) => {
+    const c = result.map((r) => {
       allUsers.find((f) => {
         if (f._id == r.usuario) {
           let aux = {
