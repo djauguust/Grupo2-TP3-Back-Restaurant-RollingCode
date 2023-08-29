@@ -1,4 +1,4 @@
-const RestaurantModel = require("../models/restaurant.model");
+
 const Restaurant = require("../models/restaurant.model");
 
 /* const usuariosController = require("../controllers/usuarioController");
