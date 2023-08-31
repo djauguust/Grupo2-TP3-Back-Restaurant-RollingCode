@@ -11,6 +11,8 @@ router.get("/mensajes", mensajesControllers.getMessage);
 //POST
 router.post("/mensajes", mensajesControllers.createMessage)
 
+//PUT
+router.put("/mensajes/:messageId", mensajesControllers.editMessage)
 
 //DELETE
 router.delete("/mensajes/:messageId", mensajesControllers.deleteMessage)
