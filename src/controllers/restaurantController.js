@@ -1,9 +1,5 @@
-
 const Restaurant = require("../models/restaurant.model");
 
-/* const usuariosController = require("../controllers/usuarioController");
-
-router.post("/register", usuariosController.register); */
 
 //GET
 const getRestaurant = async (req, res) => {
