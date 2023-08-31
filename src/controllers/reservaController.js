@@ -249,6 +249,24 @@ const updateReserva = async (req, res) => {
   }
 };
 
+const reservaUsada = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const reserva = await Reservas.findById(id);
+
+    if (reserva) {
+      reserva.fueUsada = req.body.fueUsada;
+
+      await reserva.save();
+      res.status(201).json({ message: "¡Reserva Utilizada!", reserva });
+    } else {
+      res.status(404).json({ error: "Reserva no encontrada" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 //DELETE
 const deleteReserva = async (req, res) => {
   try {
@@ -269,4 +287,5 @@ module.exports = {
   updateReserva,
   getDisponibilidadPorFechaYHora,
   getHorariosDisponiblesByFecha,
+  reservaUsada,
 };
