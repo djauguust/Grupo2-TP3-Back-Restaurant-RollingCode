@@ -25,7 +25,7 @@ const mensajesModel = new Schema(
       // trim: true
     },
     date: {
-      type : String,
+      type : Date,
       require: true
     },
     leido: {
