@@ -137,12 +137,40 @@ const getReservasByFecha = async (req, res) => {
           hora: r.hora,
           comensales: r.comensales,
           fueUsada: r.fueUsada,
-          usuario: { _id: r.usuario, nombre: "Usuario NO encontrado", a: a },
+          usuario: { _id: r.usuario, nombre: "Usuario NO encontrado" },
         };
       }
       array = [...array, aux];
     });
     res.status(200).json(array);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const getReservasByUser = async (req, res) => {
+  try {
+    const usuario = req.params.idUsuario;
+    const result = await Reservas.find();
+    let array = [];
+    const c = result.map((r) => {
+      let aux;
+      if (usuario == r.usuario) {
+        aux = {
+          _id: r._id,
+          fecha: r.fecha,
+          hora: r.hora,
+          comensales: r.comensales,
+          fueUsada: r.fueUsada,
+        };
+        array = [...array, aux];
+      }
+    });
+    if (array.length != 0) {
+      res.status(200).json(array);
+    } else {
+      res.status(400).json({ message: "¡Usuario no encontrado!" });
+    }
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -289,4 +317,5 @@ module.exports = {
   getDisponibilidadPorFechaYHora,
   getHorariosDisponiblesByFecha,
   reservaUsada,
+  getReservasByUser,
 };

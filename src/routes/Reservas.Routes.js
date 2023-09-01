@@ -17,6 +17,7 @@ router.get(
   ReservasController.getDisponibilidadPorFechaYHora
 );
 router.get("/turnos/:fecha", ReservasController.getHorariosDisponiblesByFecha);
+router.get("/reservasByUsuario/:idUsuario", ReservasController.getReservasByUser);
 
 //PUT
 router.put("/reservas/:id", ReservasController.updateReserva);
