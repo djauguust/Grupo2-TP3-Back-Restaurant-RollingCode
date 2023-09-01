@@ -226,14 +226,15 @@ const updateReserva = async (req, res) => {
     const algo = await hayDisponibilidad(
       req.body.fecha,
       hour,
-      req.body.comensales
+      req.body.comensales,
+      req.body.fueUsada
     );
     if (reserva) {
       if (algo) {
         reserva.fecha = req.body.fecha || reserva.fecha;
         reserva.hora = req.body.hora || reserva.hora;
         reserva.comensales = req.body.comensales || reserva.comensales;
-
+        reserva.fueUsada = req.body.fueUsada || reserva.fueUsada;
         await reserva.save();
         res.status(201).json({ message: "¡Reserva Modificada!", reserva });
       } else {
