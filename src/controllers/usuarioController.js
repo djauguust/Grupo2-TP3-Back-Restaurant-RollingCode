@@ -31,7 +31,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const user = await Usuarios.findOne({ email: req.body.email });
-    console.log(user);
+
     if (!user) {
       return res.status(404).send("Usuario y/o contraseña incorrectos");
     }
@@ -49,7 +49,6 @@ const login = async (req, res) => {
       process.env.SECRET_KEY,
       { expiresIn: "1D" }
     );
-    console.log(token);
     res.header("auth-token", token).json({
       data: { token },
     });
