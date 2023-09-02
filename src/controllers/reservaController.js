@@ -260,7 +260,7 @@ const updateReserva = async (req, res) => {
     if (reserva) {
       if (algo) {
         reserva.fecha = req.body.fecha || reserva.fecha;
-        reserva.hora = req.body.hora || reserva.hora;
+        reserva.hora = hour || reserva.hora;
         reserva.comensales = req.body.comensales || reserva.comensales;
         reserva.fueUsada = req.body.fueUsada || reserva.fueUsada;
         await reserva.save();
