@@ -169,7 +169,7 @@ const getReservasByUser = async (req, res) => {
     if (array.length != 0) {
       res.status(200).json(array);
     } else {
-      res.status(400).json({ message: "¡Usuario no encontrado!" });
+      res.status(400).json({ message: "¡Usuario no encontrado/Usuario sin reservas!" });
     }
   } catch (error) {
     res.status(404).json({ message: error.message });
