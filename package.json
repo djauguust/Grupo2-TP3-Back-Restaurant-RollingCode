@@ -1,0 +1,39 @@
+{
+  "name": "backend-rollinggourmet",
+  "version": "1.0.0",
+  "description": "Backend correspondiente al último proyecto del grupo 2 de la comisión 46i para terminar el curso de Full Stack de Rolling Code",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djauguust/Grupo2-TP3-Back-Restaurant-RollingCode.git"
+  },
+  "keywords": [
+    "request",
+    "response",
+    "GET",
+    "POST",
+    "PATCH",
+    "DELETE"
+  ],
+  "author": "OST\",",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/djauguust/Grupo2-TP3-Back-Restaurant-RollingCode/issues"
+  },
+  "homepage": "https://github.com/djauguust/Grupo2-TP3-Back-Restaurant-RollingCode#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.3",
+    "morgan": "^1.10.0"
+  }
+}
