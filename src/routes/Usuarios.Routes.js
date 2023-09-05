@@ -8,8 +8,8 @@ router.post("/usuarios/", usuariosController.register);
 router.post("/login/", usuariosController.login);
 
 //GET
-router.get("/usuarios/", usuariosController.getAllUsers);
-router.get("/usuarios/:id", usuariosController.getUserById);
+router.get("/usuarios/",usuariosController.validateToken, usuariosController.getAllUsers);
+router.get("/usuarios/:id",usuariosController.validateToken, usuariosController.getUserById);
 
 //PUT
 router.put("/usuarios/:id", usuariosController.updateUser);
