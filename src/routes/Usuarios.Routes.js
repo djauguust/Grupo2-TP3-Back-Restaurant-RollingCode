@@ -12,10 +12,10 @@ router.get("/usuarios/",usuariosController.validateToken, usuariosController.get
 router.get("/usuarios/:id",usuariosController.validateToken, usuariosController.getUserById);
 
 //PUT
-router.put("/usuarios/:id", usuariosController.updateUser);
-router.put("/contrasenia/:id", usuariosController.updatePassword);
+router.put("/usuarios/:id",usuariosController.validateToken, usuariosController.updateUser);
+router.put("/contrasenia/:id",usuariosController.validateToken, usuariosController.updatePassword);
 
 //DELETE
-router.delete("/usuarios/:id", usuariosController.deleteUser);
+router.delete("/usuarios/:id",usuariosController.validateToken, usuariosController.deleteUser);
 
 module.exports = router;
