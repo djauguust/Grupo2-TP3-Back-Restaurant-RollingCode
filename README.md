@@ -95,8 +95,8 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
 ### Link Deploy:
 
 ### Integrantes:
-[Mauro Simon Jose](http://github.com/MauroSJ "Mauro Simon Jose")
-[Lucas Yudi](http://github.com/Yudi454 "Lucas Yudi")
-[Augusto Ismael](http://github.com/djauguust "Augusto Ismael")
-[Pedro Antich](http://github.com/PedroAntich "Pedro Antich")
-[Leo](http://github.com/LeoAc92 "Leo")
+-- [Mauro Simon Jose](http://github.com/MauroSJ "Mauro Simon Jose") --
+-- [Lucas Yudi](http://github.com/Yudi454 "Lucas Yudi") --
+-- [Augusto Ismael](http://github.com/djauguust "Augusto Ismael") --
+-- [Pedro Antich](http://github.com/PedroAntich "Pedro Antich") --
+-- [Leo](http://github.com/LeoAc92 "Leo") --
