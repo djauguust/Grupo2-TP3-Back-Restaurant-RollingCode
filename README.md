@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://live.staticflickr.com/65535/53174557368_553ef84886_n.jpg" alt="rest" title="rest">
-</p>
+</p> 
+
 # Proyecto Restaurante RollinCode
 
 <p>
