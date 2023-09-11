@@ -22,7 +22,7 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
 `npm start`
 
 ### Endpoints/API:
-1. Endpoint de usuarios:
+#### Endpoint de usuarios:
 - Ruta: `/api/usuarios/`
  - Método HTTP: `POST`
  - Descripción: Este endpoint permite registrar un usuario.
@@ -43,8 +43,9 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
  - Descripción: Este endpoint permite editar la contraseña del usuario.
 - Ruta: `/api/usuarios/:id`
  - Método HTTP: `DELETE`
- - Descripción: Este endpoint permite eliminar un usuario.
-1. Endpoint de reservas:
+ - Descripción: Este endpoint permite eliminar un usuario.  
+
+#### Endpoint de reservas:
 - Ruta: `/api/reservas`
  - Método HTTP: `POST`
  - Descripción: Este endpoint permite crear una reserva.
@@ -66,7 +67,8 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
 - Ruta: `/api/reservas/usada/:id`
  - Método HTTP: `PUT`
  - Descripción: Este endpoint permite actualizar el estado de una reserva.
-1. Endpoint de mensajes:
+
+#### Endpoint de mensajes:
 - Ruta: `/api/mensajes`
  - Método HTTP: `GET`
  - Descripción: Este endpoint permite obtener todos los mensajes al administrador.
@@ -75,23 +77,24 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
  - Descripción: Este endpoint permite crear mensajes al usuario.
 - Ruta: `/api/mensajes/:messageId`
  - Método HTTP: `PUT`
- - Descripción: Este endpoint permite editar mensajes y cambiar el estado de leido.
+ - Descripción: Este endpoint permite editar mensajes y cambiar el estado de leído.
 - Ruta: `/api/mensajes/:messageId`
  - Método HTTP: `DELETE`
- - Descripción: Este endpoint permite eliminar mensajes un mensaje.
-1. Endpoint del restaurante:
+ - Descripción: Este endpoint permite eliminar un mensaje.
+
+#### Endpoint del restaurante:
 - Ruta: `/api/restaurant`
  - Método HTTP: `GET`
- - Descripción: Este endpoint permite obtener informacion del restaurante.
+ - Descripción: Este endpoint permite obtener información del restaurante.
 - Ruta: `/api/restaurant`
  - Método HTTP: `PUT`
- - Descripción: Este endpoint permite actualizar informacion del restaurante.
+ - Descripción: Este endpoint permite actualizar información del restaurante.
 - Ruta: `/api/restaurant/fecha/`
  - Método HTTP: `POST`
  - Descripción: Este endpoint permite al administrador agregar una fecha no disponible.
 - Ruta: `/api/restaurant/fecha/`
  - Método HTTP: `DELETE`
- - Descripción: Este endpoint permite permite al administrador eliminar una fecha no disponible.
+ - Descripción: Este endpoint permite al administrador eliminar una fecha no disponible.
 
 ### Tecnologias y librerias usadas
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
@@ -103,4 +106,4 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
 -- [Lucas Yudi](http://github.com/Yudi454 "Lucas Yudi") --
 -- [Augusto Ismael](http://github.com/djauguust "Augusto Ismael") --
 -- [Pedro Antich](http://github.com/PedroAntich "Pedro Antich") --
--- [Leo](http://github.com/LeoAc92 "Leo") --
+-- [Leonardo Castro](http://github.com/LeoAc92 "Leo") --
