@@ -37,10 +37,14 @@ const hayDisponibilidad = async (fecha, hora, comensales) => {
     array.map((a) => {
       suma += cantComensalesXFechaYHora(reservasDelDia, fecha, a)[0];
     });
+    console.log("suma es :",suma)
+    console.log("comensales es :",comensales);
     if (suma <= 10 - comensales) {
-      return true;
+      return {valor : true,};
     } else {
-      return false;
+      return {valor : false,
+        suma : suma
+        };
     }
   } catch (error) {}
 };
@@ -84,7 +88,8 @@ const newReserva = async (req, res) => {
     const { fecha, hora, comensales, usuario } = req.body;
     const hour = estandarizarHora(hora);
     const algo = await hayDisponibilidad(fecha, hour, comensales);
-    if (algo) {
+    console.log("contenido de algo",algo);
+    if (algo.valor === true) {
       const reserva = new Reservas({
         fecha,
         hora: hour,
@@ -97,7 +102,7 @@ const newReserva = async (req, res) => {
     } else {
       res
         .status(400)
-        .json({ message: "¡Capacidad del restaurante insuficiente!" });
+        .json({ message: `¡Capacidad del restaurante insuficiente!, cantidad disponible = ${10 - algo.suma}` });
     }
   } catch (error) {
     res.status(404).json({ message: error.message });
