@@ -2,6 +2,8 @@ const Reservas = require("../models/reservas.model");
 const Usuarios = require("../models/usuarios.model");
 const bcrypt = require("bcrypt");
 
+
+
 // FUNCIONES INTERNAS:
 const cantComensalesXFechaYHora = (reservas, fecha, hora) => {
   try {
@@ -29,7 +31,8 @@ const actualYTresTurnosPrevios = (hora) => {
   ];
 };
 
-const hayDisponibilidad = async (fecha, hora, comensales,fueUsada,comensalesInicial) => {
+const hayDisponibilidad = async (fecha, hora, comensales,fueUsada,comensalesInicial,maximoComensales) => {
+
   try {
     let array = actualYTresTurnosPrevios(hora);
     let suma = 0;
@@ -37,8 +40,7 @@ const hayDisponibilidad = async (fecha, hora, comensales,fueUsada,comensalesInic
     array.map((a) => {
       suma += cantComensalesXFechaYHora(reservasDelDia, fecha, a)[0];
     });
-    console.log("suma - comensales inicial", suma - comensalesInicial);
-    if (suma - comensalesInicial <= 10 - comensales) {
+    if (suma - comensalesInicial <= maximoComensales - comensales) {
       return {valor : true,};
     } else {
       return {valor : false,
@@ -47,6 +49,8 @@ const hayDisponibilidad = async (fecha, hora, comensales,fueUsada,comensalesInic
     }
   } catch (error) {}
 };
+
+//hayDisponibilidad()
 
 const estandarizarHora = (hora) => {
   try {
@@ -84,9 +88,9 @@ function generarArrayDeHoras() {
 //POST
 const newReserva = async (req, res) => {
   try {
-    const { fecha, hora, comensales, usuario,comensalesInicial } = req.body;
+    const { fecha, hora, comensales, usuario,comensalesInicial, maximoComensales} = req.body;
     const hour = estandarizarHora(hora);
-    const algo = await hayDisponibilidad(fecha, hour, comensales,req.body.fueUsada,comensalesInicial);
+    const algo = await hayDisponibilidad(fecha, hour, comensales,req.body.fueUsada,comensalesInicial,maximoComensales);
     console.log(comensalesInicial);
     if (algo.valor === true) {
       const reserva = new Reservas({
@@ -260,7 +264,8 @@ const updateReserva = async (req, res) => {
       hour,
       req.body.comensales,
       req.body.fueUsada,
-      req.body.comensalesInicial
+      req.body.comensalesInicial,
+      req.body.maximoComensales
     );
     if (reserva) {
       if (algo.valor === true) {
