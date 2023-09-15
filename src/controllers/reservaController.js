@@ -29,7 +29,7 @@ const actualYTresTurnosPrevios = (hora) => {
   ];
 };
 
-const hayDisponibilidad = async (fecha, hora, comensales) => {
+const hayDisponibilidad = async (fecha, hora, comensales,fueUsada,comensalesInicial) => {
   try {
     let array = actualYTresTurnosPrevios(hora);
     let suma = 0;
@@ -37,9 +37,8 @@ const hayDisponibilidad = async (fecha, hora, comensales) => {
     array.map((a) => {
       suma += cantComensalesXFechaYHora(reservasDelDia, fecha, a)[0];
     });
-    console.log("suma es :",suma)
-    console.log("comensales es :",comensales);
-    if (suma <= 10 - comensales) {
+    console.log("suma - comensales inicial", suma - comensalesInicial);
+    if (suma - comensalesInicial <= 10 - comensales) {
       return {valor : true,};
     } else {
       return {valor : false,
@@ -85,10 +84,10 @@ function generarArrayDeHoras() {
 //POST
 const newReserva = async (req, res) => {
   try {
-    const { fecha, hora, comensales, usuario } = req.body;
+    const { fecha, hora, comensales, usuario,comensalesInicial } = req.body;
     const hour = estandarizarHora(hora);
-    const algo = await hayDisponibilidad(fecha, hour, comensales);
-    console.log("contenido de algo",algo);
+    const algo = await hayDisponibilidad(fecha, hour, comensales,req.body.fueUsada,comensalesInicial);
+    console.log(comensalesInicial);
     if (algo.valor === true) {
       const reserva = new Reservas({
         fecha,
@@ -260,10 +259,11 @@ const updateReserva = async (req, res) => {
       req.body.fecha,
       hour,
       req.body.comensales,
-      req.body.fueUsada
+      req.body.fueUsada,
+      req.body.comensalesInicial
     );
     if (reserva) {
-      if (algo) {
+      if (algo.valor === true) {
         reserva.fecha = req.body.fecha || reserva.fecha;
         reserva.hora = hour || reserva.hora;
         reserva.comensales = req.body.comensales || reserva.comensales;
