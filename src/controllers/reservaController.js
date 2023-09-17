@@ -105,7 +105,7 @@ const newReserva = async (req, res) => {
     } else {
       res
         .status(400)
-        .json({ message: `¡Capacidad del restaurante insuficiente!, cantidad disponible = ${10 - algo.suma}` });
+        .json({ message: `¡Capacidad del restaurante insuficiente!, cantidad disponible = ${maximoComensales - algo.suma}` });
     }
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -278,7 +278,7 @@ const updateReserva = async (req, res) => {
       } else {
         res
           .status(400)
-          .json({ message: "¡Capacidad del restaurante insuficiente!" });
+          .json({ message: `¡Capacidad del restaurante insuficiente!, cantidad disponible = ${req.body.maximoComensales - algo.suma}` });
       }
     } else {
       res.status(404).json({ error: "Reserva no encontrada" });
