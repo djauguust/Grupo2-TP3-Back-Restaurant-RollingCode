@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+
 //Validar Token
 const validateToken = async (req,res,next) => {
     const accesToken = req.headers[`auth-token`]
