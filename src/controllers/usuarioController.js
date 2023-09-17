@@ -50,6 +50,7 @@ const login = async (req, res) => {
       { expiresIn: "1D" }
     );
     res.header("auth-token", token).json({
+      message: "Usuario logueado con éxito",
       data: { token },
     });
   } catch (error) {}
