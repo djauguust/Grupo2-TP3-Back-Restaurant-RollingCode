@@ -7,7 +7,7 @@ const db = process.env.DB;
 const conectDb = async () => {
   try {
     /* await mongoose.connect(`${uri}${db}`, { */
-    await mongoose.connect(`mongodb+srv://djauguust:FhOXKqYC4L5NzWWO@cluster0.jrw9sxt.mongodb.net/`, {
+    await mongoose.connect(uri, {
     useNewUrlParser: true,
       useUnifiedTopology: true,
     });
