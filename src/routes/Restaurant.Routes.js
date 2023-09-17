@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 const restaurantController = require("../controllers/restaurantController");
-const usuariosController = require("../controllers/usuarioController");
+const tokenController = require("../controllers/tokenController")
 
 //GET
-router.get("/restaurant/",usuariosController.validateToken, restaurantController.getRestaurant);
+router.get("/restaurant/",tokenController.validateToken, restaurantController.getRestaurant);
 
 //PUT
-router.put("/restaurant/",usuariosController.validateToken, restaurantController.updateRestaurant);
+router.put("/restaurant/",tokenController.validateToken, restaurantController.updateRestaurant);
 
 //POST
-router.post("/restaurant/fecha/",usuariosController.validateToken, restaurantController.addFechaNoDisp);
+router.post("/restaurant/fecha/",tokenController.validateToken, restaurantController.addFechaNoDisp);
 
 //DELETE
-router.delete("/restaurant/fecha/:fecha",usuariosController.validateToken, restaurantController.deleteFechaNoDisp);
+router.delete("/restaurant/fecha/:fecha",tokenController.validateToken, restaurantController.deleteFechaNoDisp);
 
 module.exports = router;
