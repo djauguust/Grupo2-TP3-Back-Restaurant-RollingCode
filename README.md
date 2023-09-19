@@ -99,7 +99,6 @@ Restaurante RollingCode es nuestro tercer proyecto que busca cumplir con las dem
 ### Tecnologias y librerias usadas
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
-### Link Deploy:
 
 ### Integrantes:
 -- [Mauro Simon Jose](http://github.com/MauroSJ "Mauro Simon Jose") --
